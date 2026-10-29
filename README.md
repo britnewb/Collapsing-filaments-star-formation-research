@@ -2,7 +2,7 @@
 
 My PhD thesis work on the collapsing of molecular cloud filaments leading to star formation.
 
-The PhD thesis work took place from 2013-2015 at the University of Toronto under the supervision of Professor Christopher Matzner. The these was never published.
+The  work took place from 2013-2015 at the University of Toronto under the supervision of Professor Christopher Matzner. The thesis was never published.
 
 
 ## Scientific background: 
