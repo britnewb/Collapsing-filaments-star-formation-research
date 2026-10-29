@@ -13,8 +13,12 @@ In Physics, anything which happens in a predictable fashion must have a reason; 
 
 ## Methodology
 
-Our research involved
+Our research involved using the hydrodynamics code RAMSES to run simulations of collapsing structures that mimicked molecular clouds. The collapse was initiated as an initial condition of the sequence, which was then run with Adaptive Mesh Refinement (AMR) so that only the more dense and physically interesting structures were followed with high computational precision.
 
+## Making the document files
+
+The document `proposal_draft.pdf` can be compiled from the LaTeX file in `compilation/proposal_draft.tex` by running 
+`make`.
 
 
 

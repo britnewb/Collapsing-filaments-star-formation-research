@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage[left=2cm,top=2.5cm,right=2cm,bottom=2.5cm, nohead,nofoot]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{setspace}
+\usepackage{mathrsfs}
+\usepackage[round]{natbib}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{mathtools}
+%\usepackage{hyperref}	%for linking table of contents
+\usepackage[makeroom]{cancel}
+%\usepackage{color}
+
+\begin{document}
+\title{October 2014 PhD committee meeting}
+\author{{\bf Britta Hansen} \\ \small {Supervisor:}\\ \small {Christopher Matzner}}
+\maketitle
+\DeclareGraphicsExtensions{.png}
+
+
+
+\section{Progress}
+
+
+We have decided to use the AMR hydro code Ramses in order to numerically explore the parameter space of cluster-scaled star formation. As filaments are pervasive in the star-forming molecular clouds \cite{a012}, I have been focusing on their properties.
+
+Most work since the last meeting has been setting up and understanding how the Ramses code functions. The code comes with a test suite; I have been trying to get each of the tests to work, and then tweaking their parameters to understand how the parameters function and affect the outcome. I have thus been learning how to use the python module Pymses, in order extract the binary output from the Ramses code. From there I have been playing with matplotlib and Visit in order to make movies and plots of my simulation data. Figure 1 is an example of the logarithm of the density from a 3D Sedov blast simulated in Ramses, executed from the test suite.
+
+\begin{figure}
+\centerline{\includegraphics[scale=0.75,natwidth=642,natheight=564]{../ramses/trunk/ramses/results/Sedov3d/sedov3d_refine_11/density2}}
+\caption{Logarithmic density slice for a 3D Sedov blast} 
+\end{figure}
+
+
+
+
+\section{Upcoming work}
+
+
+The next step is to create my own input parameter file, in order to make more complicated initial conditions, such as those that would be seen in molecular clouds. This is necessary because the given inital conditions files do not allow for complex shapes or flows. 
+
+I am currently trying to simulate filaments, and learn of their properties. These must be 3D simulations in order to capture the physics of the filaments, not to be mistaken with the cross-section of sheets. The filaments will be modelled as isothermal cylinders, as in \cite{im97}, and they will be in near pressure-equilibrium with their surroundings.
+
+To test if my input files and simulations are correctly capturing the nature of the filaments, I will check that the mass per unit length, defined as \begin{align}
+M_{crit} = \frac{2c_s^2}{G}
+\end{align} indeed defines a critical case, whereby supercritical filaments collapse, and subcritical filaments are gravitationally unbound, as was derived in \cite{im92}.
+
+
+
+
+
+\section{Graduation timeline}
+
+
+My thesis qualifying exam will likely occur within the next 2 months. After that I will have approximately 3 years left until graduation.
+
+
+\bibliographystyle{plainnat}
+\bibliography{bibliography}
+
+
+
+\end{document}

@@ -1,0 +1,94 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[left=2.54cm,top=2.54cm,right=2.54cm,includehead,nofoot]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage[round]{natbib}
+\usepackage{graphicx}	% for includegraphics
+\usepackage{mathtools}
+%\usepackage{hyperref}	%for linking table of contents
+
+\begin{document}
+
+\bibliographystyle{plainnat}
+
+\section{Abstract} Recent observations of the dense interstellar medium - the main locale of star formation - have found that filamentary structure is ubiquitous and that filaments are strongly associated with clusters. As such there is much speculation on the effects of filaments on star formation and on the initial mass function. One of the several noteworthy properties of these filaments is their flattened density profile, commonly called a Plummer profile. Such a density profile can be defined by three parameters: an exponent $\eta$, a flatness radius $R_{flat}$, and a central density $n_{flat}$. Observations in the Taurus Molecular Cloud 1 (TMC1) have found that the values of the central density can vary by more than an order of magnitude, whereas the exponent is typically 2.5 and the flatness radius is about 0.04pc. Simulations which created filaments from a turbulent medium and measured their density profiles seem to be in agreement with the observed values, in that the simulated filament parameters fall within observed ranges, but also have large variance, not just for the central density, but for all three density profile parameters. An understanding of the origin of this flattened density profile could be important for an understanding of the filament formation mechanism. We propose to run a series of simulations, creating filaments from a decaying turbulent velocity field with self-gravity and a magnetic field. While maintaining the magnetic field strength and orientation, we will vary the initial turbulent velocity dispersion and power. We will analyse the values of the Plummer profile parameters using the best-fit algorithm DisPerSE and we will attempt to causaly connect the values of the Plummer parameters with the initial values of the turbulent velocity field. We will also examine the multiplicity of filaments, their scale heights, and their lengths, all as a function of the initial turbulence field.
+
+\section{Introduction} %(description of hypothesis to be tested and motivation for why)
+
+It is well known that filamentary structure is prevalent in the interstellar medium \citep{nut08} and that newly forming stars and cores are intimately connected to these filaments \citep{arz11}. An understanding of star formation thus relies on an understanding of these filaments. These filaments have several notable properties: their scale height is typically just less than 0.1pc \citep{arz11} \citep{fm12} \citep{hen13} \citep{pal13}, and their velocity dispersions are typically 0.2$km/s$ to 10$km/s$. Another interesting property is their density profile, which tends to flatten out characteristically towards the centre. \citep{jml12} \citep{nut08}\\
+
+The following is the Plummer density profile of a filament \citep{plu1911}
+\begin{align}
+n(r) = n_{flat}\left(\frac{R_{flat}}{\sqrt{R_{flat}^2 + r^2}}\right)^\eta
+\end{align} where $n_{flat}(r)$ is the density at the axis of symmetry, $R_{flat}$ is the scale of the region in which the density is nearly uniform, and $\eta$ is a power law slope, and $r$ is still the cylindrical radius.\\
+
+Observations in the TMC1 of these profile parameters give the following ranges for their values \citep{nut08} \citep{mal12}: \\
+the exponent $\eta$ lies between 2.3 and 3.0\\
+the flatness radius $R_{flat}$ is from 0.0485pc to 0.04pc\\
+the central molecular density is between $n_{flat}$ 1.75x$10^5cc^{-1}$ and 7x$10^{4}cc^{-1}$\\
+
+In one recent simulation \citep{jml12}, the exponent was anywhere from 1.68 to 9.94, the central density was varying from 2.4x$10^{4}cc^{-1}$ to 5.5x$10^5cc^{-1}$. Another simulation by \cite{sgk14} obtained $R_{flat}$ was 0.074, $n_{flat}$ was 1.07x$10^5cc^{-1}$, and the slope was 2.2, though the simulation did not include a magnetic field, the authors note that a magnetic field was not required for such a flat density profile.\\
+
+It is clear that although the limited observed values of $R_{flat}$ and $\eta$ do not vary much, their simulated values take on a wide range, and in both simulations and observations $n_{flat}$ can change by more than an order of magnitude. This brings up a few questions: How much can we expect the values of the exponent and the flatness radius to change as we collect more observational data? Are the variations in the simulations realistic? Can the values of the Plummer profile parameters tell us something about the filament's history and nature?\\
+
+Filaments are often referred to as being critical, subcritical, or supercritical. This comes from a notion of \cite{im92} (itself based on \cite{ost64}), in which infinite isothermal cylinders have a characteristic mass per unit length in order to be stable. This is the result of integrating the equations of hydrostatic structure out to infinity. Assuming the density profile is as specified by Ostriker, with $r$ being this cylindrical radius:
+\begin{align*}
+\rho(r) &= \rho_{max} \left(1 + \left(\frac{r}{H_o}\right)^2\right)^{-2}
+\end{align*} Where $H_o$ is the scale height given by $\sqrt{\frac{2c_s^2}{\rho_{max} \pi G}}$\\
+They then integrate this as such:
+\begin{align*}
+\ell&= \int_0^\infty 2\pi r \rho(r) dr\\
+	&= \frac{2c_s^2}{G}
+\end{align*} $\ell$ is the critical mass per unit length. Any greater mass (supercritical) leads to homologous collapse on a free fall timescale. Any less mass (subcritical) and the filament would expand until it reaches equiblirium with the external pressure. This means that ideal isothermal cylinders can be critical regardless of their radius.\\
+
+Measurements of column density seem to suggest that the filaments in the ISM which are actively undergoing star formation are supercritical \citep{pal13}, and that subcritical filaments (often called striations) are orthogonal to the supercritical ones, and possibly feeding them matter \citep{per12}.\\
+
+One common method of creating filamentary structure such as that observed in the ISM is to include a decaying turbulent velocity field and self-gravity; see the work of \citep{bwc01}, \citep{go11}, \citep{mcm15} and many others. \cite{arz13} claim the observed subcritical filaments had supersonic velocities but with velocity dispersions less than twice the sound speed, and that the thermally supercritical filaments had velocity dispersions scaling roughly as the square root of the column density $\sigma_{tot} \propto \Sigma^{0.5}$. This is consistent with the recent simulation work of \cite{mcm15}, in which the velocity dispersions increased with density. Some such simulations do not include a magnetic field, though magnetic fields are known to be present in the ISM, with strengths on the order of 15 micro Gauss. Other simulations do include magnetic fields, and it has been stipulated that magnetic fields could act as a form of pressure support for the filaments \citep{lar85} \citep{pal13}.\\
+
+Observations of polarization in the ISM seem to indicate that that the striations are aligned parallel to the magnetic field, while supercritical filaments are seemingly orthogonal to the magnetic field. \cite{soler13} performed a simulation varying the magnetic field orientation over different runs of the same turbulent velocity field, and concluded that the orientation of the magnetic field indeed changes the morphology of the filamentary structure formed; the subcritical filaments tended to align themselves along the field axis. This alignment is speculated to be caused by another form of criticality \citep{mkk14}: magnetic critical mass is the maximum mass supported against gravitational collapse by a magnetic field. If $\Phi = B_0L^2$ is the B flux threading the box, the critical mass is $M_\Phi \propto \frac{\Phi}{G^{0.5}}$. 
+
+\section{Research methodology} %(how are you goign to test this with your simulations?)
+
+We will be performing simulations using the adaptive mesh refinement (AMR) code RAMSES \citep{tey02}, which is a publicly available code using a space-filling curve to refine details, as compared to traditional AMR codes which use a cartesian mesh. The advantage of the space-filling curve is an improved load balance between GPUs when parallel computing. We will be running our simulations on the supercomputing system SciNet, which has given us xxx core hours for our work.\\
+
+We will begin each simulation with a turbulent velocity field with self-gravity and a magnetic field of about 15$\mu$G. We will allow the turbulence to decay and filaments to form from the collapsing media. After a fixed time of about 1 Myr (chosen because it's on the order of the free fall timescale of the cloud), we will stop the simulation, and examine the properties of the filaments formed. We will measure the Plummer profile parameters of the filaments, using the DisPerSE algorithm. We will also measure the filament multiplicities, scale heights, and lengths, all as a function of the turbulent power and velocity dispersion.\\
+
+%Ranges of velocity dispersions, state slope of power law, state power ranges. Why did you choose these ranges?\\
+In so doing we will test the rigourousness of the Plummer profile parameters and the causality of the initial turbulent velocity field. We would also like to explore whether magnetic support really is necessary for the continued existence of such filaments, since the filaments aligned with the magnetic field may have statistically different density profile values and timescales than the other filaments.\\
+
+%In the densest regions of the filament the FWHM gets smaller, so there is a correlations between central density and flatness radius. http://arxiv.org/pdf/1206.4837.pdf section 5.1
+
+\bibliography{bibliography}
+
+\end{document}
+
+%Citations
+
+%Andr ́e, P. et al., 2010 - this structure is ubiquitous throughout the cold ISM and10
+%Arzoumanian, D. et al., 2011 - prestellar cores form within filaments; characteristic radius is 0.1pc; velocity dispersions arz11
+%Fischera, J. and Martin, P.,2012 - characteristic radius is 0.1pc fm12
+%Friesen, R. K. et al. (2013) - min mass accretion rate on filament in Serpens South
+%Hennebelle, P.,2013 - characteristic radius is 0.1pc hen13
+%Inutsuka, S. and Miyama, S. M. (1992) - criticality im92
+%Juvela,2M. et al., 2012 - dENSITY PROfiles are Plummer jml12
+%Kirk, H. et al. (2013) - estimate mass accretion rate onto central cluster in Serpens South
+%Larson, R., 1985 - Magnetic fields can inhibit collapse of a filament lar85
+%Murray, Chang, Murray and ?? 2015 - simulation with FLASH with driven turbulence, get LArson's LW-S, mcm15
+%Nutter, D. et al., 2008 - TMC1 is one of the nearest SF sites and has plenty of fil structure. dENSITY PROfiles are Plummer. Treat eta as 				 	free parameter nut08
+%Ostriker, J. (1964) - criticality ost64
+%Palmeirim, P. et al., 2013 - measured column densities imply some of these fils are supercritical; characteristic radius is 0.1pc; suggest 					Bs are necessary to slow the collapse of fils pal13
+%Peretto,. et al., 2012 - Pipe nebula striation per12
+%Planck Collaboration, XXXIII, 2014) - polarization data planck33
+%Plummer, H. C., 1911 - Plummer profile plu11
+%Smith, R. et al., 2014 - dENSITY PROfiles are Plummer sgk14
+%Soler, Hennebelle, Martin Deschesnes etc - Took same turbulent velocity field but changed the orientation and strength of the B. soler13
+%Toal ́a, J.A. et al. (2012) - include the finiteness of a filament - global $t_ff$ would increase but local unchanged
+
+%http://arxiv.org/pdf/0711.3565.pdf get Rflat = 1e4AU, nH2flat = 1.75e5 per cc, eta is 3, and A sub v in the external cloud is 0.39. Nutter, Kirk, Stamatellos, Ward-Thompson, 2014. nut08
+
+%Malinen, Juvela et al. 2012. http://arxiv.org/pdf/1206.4837.pdf Claim Plummer params are not well constrained and caution should be taken when making the fits and interpreting the results. Get Rflat is 0.04pc. nflat is abotu 7e4 per cc. Slope is 2.3 mal12
+
+%Smith Glover Klessen, 2014, http://arxiv.org/pdf/1407.6716.pdf Simulations of MCs with AREPO. Fit their fils for Plummers, get p = 2.2 without magnetic support. FWHM is 0.3pc. Rflat is 0.074. nflat is 1.07e5 per cc. Claim that in original and ostriker works the slope was higher (like 5 and 4 respectively) and the most common reasoning behhind why IRL it's lower is because there's magnetic syupport, however their sims don't use mags and instead quote Fischera 2012 that background overpressure matters. Apparently ongoing accretion in  a drection perp to fil may flatten the density profile.  sgk14
+
+%Juvela Malinen, Lunttila 2012. profile of Interstellar cloud filaments. http://arxiv.org/pdf/1207.3635.pdf They claim the shapes of the fil profiles are closely linked to formation mechanism and physical state of the fils. Get FWHM of all less than 0.1pc, so that can't be too rigid to 0.1pc. p is anywhere from 1.68 to 9.94. central density was anywehere from 2.4e4 to 5.5e5, so neither of those can be too rigid either. simulation jml12 
